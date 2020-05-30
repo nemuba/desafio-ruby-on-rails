@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: ojeda
+  api_key: '635492153654223'
+  api_secret: iCXAcHyO-KulN78TgZ_MeOT233c
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: ojeda
+  api_key: '635492153654223'
+  api_secret: iCXAcHyO-KulN78TgZ_MeOT233c
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: ojeda
+  api_key: '635492153654223'
+  api_secret: iCXAcHyO-KulN78TgZ_MeOT233c
+  enhance_image_tag: true
+  static_file_support: false
