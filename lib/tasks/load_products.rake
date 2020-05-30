@@ -5,10 +5,12 @@ namespace :load_products do
   task load: :environment do
     begin
       # call API Fossill
-      data = RestClient.get "https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=0&_to=2"
+      data = RestClient.get "https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=0&_to=49"
 
       #Parse data of request
       response = JSON.parse(data.body)
+
+      store = Store.find_by(name: "Fossil")
 
       # Mapping response for get product info
       products = response.map do |product|
@@ -16,13 +18,19 @@ namespace :load_products do
           :name => product['productName'],
           :price => product['items'][0]['sellers'][0]['commertialOffer']['Price'],
           :image => product['items'][0]['images'][0]['imageUrl'],
-          :url =>  product['link']
+          :plots => 10,
+          :url =>  product['link'],
+          :store_id => store._id
         }
       end
 
-      products.each do |p|
-        if !Product.where(name: p[:name]).exists?
-          Product.create(p)
+
+
+      products.each do |product|
+        # puts product[:image]
+        if !Product.where(name: product[:name]).exists?
+          puts "Image: #{product[:image]}"
+          Product.create(product)
         end
       end
 

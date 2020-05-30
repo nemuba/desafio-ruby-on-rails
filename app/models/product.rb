@@ -17,7 +17,6 @@ class Product
       field :price
       field :plots
       field :image, :carrierwave
-      field :created_at
     end
 
     show do
