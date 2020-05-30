@@ -5,6 +5,7 @@ class Store
   field :website, type: String
   field :email, type: String
   mount_base64_uploader :logo, LogoUploader
+  has_many :products, dependent: :destroy
 
   def to_s
     self.name

@@ -7,6 +7,9 @@ pt-BR:
         store:
           one: Loja
           other: Lojas
+        product:
+          one: Produto
+          other: Produtos
       attributes:
         user:
           email: Email
@@ -20,3 +23,10 @@ pt-BR:
           email: Email
           created_at: "Criado em"
           updated_at: "Atualizado em"
+        product:
+          name: Nome
+          price: Preço
+          plots: "Parcela em até"
+          image: Imagem
+          url: Link
+          created_at: "Criado em"
