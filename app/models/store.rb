@@ -6,6 +6,7 @@ class Store
   field :email, type: String
   mount_base64_uploader :logo, LogoUploader
   has_many :products, dependent: :destroy
+  accepts_nested_attributes_for :products, :allow_destroy => true
 
   def to_s
     self.name
@@ -16,18 +17,24 @@ class Store
     object_label_method :to_s
 
     list do
-      field :name
-      field :website
-      field :email
+      field :name, :string
+      field :website, :string
+      field :email, :string
       field :logo, :carrierwave
       field :created_at
     end
 
     edit do
-      field :name
-      field :website
-      field :email
+      field :name, :string
+      field :website, :string
+      field :email, :string
       field :logo, :carrierwave
+    end
+
+    create do
+      configure :products do
+
+      end
     end
   end
 end

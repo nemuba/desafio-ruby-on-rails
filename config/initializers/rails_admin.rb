@@ -1,4 +1,11 @@
+require Rails.root.join('lib', 'rails_admin', 'list_products.rb')
+require Rails.root.join('lib', 'rails_admin', 'dashboard.rb')
+
 RailsAdmin.config do |config|
+# include helpers in RailsAdmin
+include RailsAdmin::Services
+# register action in RailsAdmin
+RailsAdmin::Config::Actions.register(Marketplace::Admin::Actions::ListProducts)
 
 config.main_app_name = ["Marketplace", ""]
 
@@ -28,6 +35,7 @@ config.main_app_name = ["Marketplace", ""]
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
+
     new
     export
     bulk_delete
@@ -36,6 +44,7 @@ config.main_app_name = ["Marketplace", ""]
     delete
     show_in_app
 
+    list_products
     ## With an audit adapter, you can add:
     # history_index
     # history_show

@@ -1,0 +1,48 @@
+module RailsAdmin
+  module Config
+    module Actions
+      class Dashboard < RailsAdmin::Config::Actions::Base
+        RailsAdmin::Config::Actions.register(self)
+
+        register_instance_option :root? do
+          true
+        end
+
+        register_instance_option :breadcrumb_parent do
+          nil
+        end
+
+        register_instance_option :controller do
+          proc do
+            #You can specify instance variables
+            @custom_stats = "grab your stats here."
+            @object = Store.all.includes(:products)
+            #You can access submitted params (just submit your form to the dashboard).
+            if params[:store]
+              @breadcamp = Store.find_by(_id: params[:store])
+              @object = Product.where(store_id: params[:store]).page(params[:page]).per(4)
+            end
+
+            #You can specify flash messages
+            # flash.now[:danger] = "Some type of danger message here."
+
+            #After you're done processing everything, render the new dashboard
+            render @action.template_name, status: 200
+          end
+        end
+
+        register_instance_option :route_fragment do
+          ''
+        end
+
+        register_instance_option :link_icon do
+          'icon-home'
+        end
+
+        register_instance_option :statistics? do
+          true
+        end
+      end
+    end
+  end
+end

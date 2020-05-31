@@ -10,12 +10,13 @@ class Product
 
   rails_admin do
     navigation_icon 'fa fa-product-hunt'
+    # visible false
     parent Store
 
     list do
-      field :name
-      field :price
-      field :plots
+      field :name, :string
+      field :price, :integer
+      field :plots, :integer
       field :image, :carrierwave
     end
 

@@ -26,8 +26,9 @@ class User
   rails_admin do
     navigation_icon 'fa fa-users'
     object_label_method :to_s
+    visible false
     list do
-      field :email
+      field :email, :string
       field :created_at
     end
 

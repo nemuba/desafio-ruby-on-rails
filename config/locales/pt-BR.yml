@@ -1,5 +1,12 @@
 ---
 pt-BR:
+  views:
+    pagination:
+      first: "&laquo; Primeiro"
+      last: "Último &raquo;"
+      next: Próximo &rsaquo;
+      previous: "&lsaquo; Anterior"
+      truncate: "&hellip;"
   mongoid:
     errors:
       messages:
@@ -263,10 +270,14 @@ pt-BR:
       item: "Item"
       message: "Mensagem"
     actions:
+      list_products:
+        title: "Produtos da Loja"
+        menu: "Produtos"
+        breadcrumb: "Produtos"
       dashboard:
-        title: "Administração do Site"
-        menu: "Dashboard"
-        breadcrumb: "Dashboard"
+        title: "Marketplace"
+        menu: "Marketplace"
+        breadcrumb: "Marketplace"
       index:
         title: "Lista de %{model_label_plural}"
         menu: "Lista"
