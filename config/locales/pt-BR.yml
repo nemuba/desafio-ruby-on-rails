@@ -1,10 +1,10 @@
 ---
 pt-BR:
-  views:
-    pagination:
+  kaminari:
+    views:
       first: "&laquo; Primeiro"
       last: "Último &raquo;"
-      next: Próximo &rsaquo;
+      next: "Próximo &rsaquo;"
       previous: "&lsaquo; Anterior"
       truncate: "&hellip;"
   mongoid:

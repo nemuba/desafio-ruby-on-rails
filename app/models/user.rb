@@ -17,6 +17,7 @@ class User
   field :remember_created_at, type: Time
 
   include Mongoid::Timestamps
+  field :admin, type: Boolean
 
   def to_s
     self.email
@@ -26,7 +27,10 @@ class User
   rails_admin do
     navigation_icon 'fa fa-users'
     object_label_method :to_s
-    visible false
+    visible do
+      bindings[:controller]._current_user.admin?
+    end
+
     list do
       field :email, :string
       field :created_at
@@ -36,6 +40,11 @@ class User
       field :email, :string
       field :password, :string
       field :password_confirmation, :string
+      configure :admin do
+        visible do
+          bindings[:controller]._current_user.admin?
+        end
+      end
     end
   end
 end

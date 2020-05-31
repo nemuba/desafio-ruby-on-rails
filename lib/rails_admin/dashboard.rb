@@ -8,20 +8,28 @@ module RailsAdmin
           true
         end
 
+        register_instance_option :visible? do
+          true
+        end
+
         register_instance_option :breadcrumb_parent do
-          nil
+          false
         end
 
         register_instance_option :controller do
           proc do
-            #You can specify instance variables
-            @custom_stats = "grab your stats here."
             @object = Store.all.includes(:products)
             #You can access submitted params (just submit your form to the dashboard).
             if params[:store]
               @breadcamp = Store.find_by(_id: params[:store])
-              @object = Product.where(store_id: params[:store]).page(params[:page]).per(4)
+
+              if params[:search]
+                @object = Product.where(store_id: params[:store], name: /.*#{params[:search]}.*/i).page(params[:page]).per(4)
+              else
+                @object = Product.where(store_id: params[:store]).page(params[:page]).per(4)
+              end
             end
+
 
             #You can specify flash messages
             # flash.now[:danger] = "Some type of danger message here."

@@ -1,38 +1,48 @@
 <% if params[:store].present? %>
-  <h2>
-    <%= link_to @breadcamp.name, '/' %>
-    > Produtos
-  </h2>
-  <% if @object.count > 0  %>
-  <% @object.each do |product| %>
-    <div class="col-xs-12 col-md-3 col-lg-3">
-      <div class="thumbnail">
-        <%= link_to  "/product/#{product._id}", class: 'img-responsive img-thumbnail' do %>
-          <img src="<%= product.image.present? ? product.image.url  : 'https://via.placeholder.com/500x300' %>" />
-        <% end %>
-        <div class="caption">
-          <h6><%= product.name %></h6>
-          <p>
-            Preço: <%= number_currency(product.price) %>
-          </p>
-          <p>Parcela em até: <%= product.plots %>X</p>
-        </div>
-      </div>
+  <%# render breadcumb %>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>
+        <%= link_to 'Lojas', '/' %> > <%= @breadcamp.name %> > Produtos
+      </h3>
     </div>
-  <% end %>
+  </div>
+
+  <% if @object.count > 0  %>
+
+  <%# render form search %>
+  <%= render :partial => 'rails_admin/main/dashboard/search' %>
+
+<%# render collection of the products %>
+  <div class="row">
+    <% @object.each do |product| %>
+      <%= render :partial => 'rails_admin/main/dashboard/product', :locals => {product: product} %>
+    <% end %>
+  </div>
+
   <% else %>
+
+  <%# render no data found %>
   <div class="col-12">
     <p>Nenhum Produto </p>
+    <% if params[:store] && params[:search] %>
+      <%= link_to "voltar", "/?store=#{@breadcamp._id}" %>
+    <% end %>
   </div>
+
   <% end %>
+
+<%# render pagination %>
 <div class="col-12">
   <%= paginate(@object) %>
 </div>
+
 <% else %>
-   <h2>Lojas</h2>
-    <div class="list-group">
+  <%# render collection of the stores %>
+  <div class="row" style="float:left;">
+      <h2 style="margin-left: 10px;">Lojas</h2>
       <% @object.each do |store| %>
-        <%= link_to store.name, "/?store=#{store._id}", class: 'list-group-item' %>
+        <%= render :partial => 'rails_admin/main/dashboard/store', :locals => {store: store} %>
       <% end %>
-    </div>
+  </div>
 <% end %>

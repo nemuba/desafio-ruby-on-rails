@@ -29,7 +29,6 @@ namespace :load_products do
       products.each do |product|
         # puts product[:image]
         if !Product.where(name: product[:name]).exists?
-          puts "Image: #{product[:image]}"
           Product.create(product)
         end
       end

@@ -1,0 +1,16 @@
+<div class="col-xs-12 col-md-3 col-lg-3">
+  <div class="thumbnail">
+    <%= link_to  "/?store=#{store._id}", class: 'img-responsive img-thumbnail' do %>
+      <img src="<%= store.logo.present? ? store.logo.url  : 'https://via.placeholder.com/500x300' %>" />
+    <% end %>
+    <div class="caption">
+      <h4><%= store.name %></h4>
+      <p>
+        <%= link_to "https://#{store.website}", target: '_blank' do %>
+          <p>Visitar Loja</>
+          <% end %>
+      </p>
+      <p>Email: <%= store.email %></p>
+    </div>
+  </div>
+</div>

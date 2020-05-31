@@ -16,6 +16,10 @@ class Store
     navigation_icon 'fa fa-star'
     object_label_method :to_s
 
+    visible do
+      bindings[:controller]._current_user.admin?
+    end
+
     list do
       field :name, :string
       field :website, :string

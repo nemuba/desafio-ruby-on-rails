@@ -1,0 +1,13 @@
+<div class="row">
+   <div class="col-md-6" style="margin: 10px 5px;">
+    <%= form_tag("/", method: :get) do %>
+      <div class="input-group">
+        <%= hidden_field_tag :store, @breadcamp._id %>
+        <%= text_field_tag :search, "", class: 'form-control', style: '200px;' %>
+          <span class="input-group-btn">
+            <%= submit_tag 'Pesquisar', class: 'btn btn-primary' %>
+          </span>
+      </div>
+    <% end %>
+   </div>
+   </div>

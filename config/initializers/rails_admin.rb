@@ -7,7 +7,10 @@ include RailsAdmin::Services
 # register action in RailsAdmin
 RailsAdmin::Config::Actions.register(Marketplace::Admin::Actions::ListProducts)
 
+
 config.main_app_name = ["Marketplace", ""]
+
+config.parent_controller = 'ApplicationController'
 
   ### Popular gems integration
 
@@ -18,7 +21,7 @@ config.main_app_name = ["Marketplace", ""]
   config.current_user_method(&:current_user)
 
   ## == CancanCan ==
-  # config.authorize_with :cancancan
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
