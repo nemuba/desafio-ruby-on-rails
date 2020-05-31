@@ -9,4 +9,5 @@ production:
     default:
       uri: <%= ENV['MONGODB_URI'] %>
       options:
+        server_selection_timeout: 5
         connect_timeout: 15
