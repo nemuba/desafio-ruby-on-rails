@@ -19,6 +19,13 @@ module Marketplace
         register_instance_option :link_icon do
           'icon-eye-open'
         end
+
+         register_instance_option :controller do
+          proc do
+            @title = "TO aqui #{params[:id]}"
+            @object = Product.where(:store_id => params[:id]).page(params[:page]).per(4)
+          end
+        end
         # # You may or may not want pjax for your action
         # register_instance_option :pjax? do
         #   false

@@ -295,16 +295,16 @@ pt-BR:
         link: "Criar um novo %{model_label}"
         done: "criado"
       edit:
-        title: "Editar %{model_label} '%{object_label}'"
+        title: "Editar %{model_label} %{object_label}"
         menu: "Editar"
         breadcrumb: "Editar"
         link: "Editar este %{model_label}"
         done: "atualizado"
       delete:
-        title: "Remover %{model_label} '%{object_label}'"
+        title: "Remover %{model_label} %{object_label}"
         menu: "Remover"
         breadcrumb: "Remover"
-        link: "Remover '%{object_label}'"
+        link: "Remover %{object_label}"
         done: "removido"
       bulk_delete:
         title: "Remover %{model_label_plural}"
@@ -323,10 +323,11 @@ pt-BR:
         menu: "Histórico"
         breadcrumb: "Histórico"
       history_show:
-        title: "Histórico para %{model_label} '%{object_label}'"
+        title: "Histórico para %{model_label} %{object_label}"
         menu: "Histórico"
         breadcrumb: "Histórico"
     form:
+      new_model: "Novo"
       cancel: "Cancelar"
       basic_info: "Informação Básica"
       required: "Obrigatórios"

@@ -40,7 +40,7 @@ class User
       field :email, :string
       field :password, :string
       field :password_confirmation, :string
-      configure :admin do
+      field :admin do
         visible do
           bindings[:controller]._current_user.admin?
         end

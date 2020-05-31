@@ -8,6 +8,7 @@ class Ability
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :read, :dashboard           # allow access to dashboard
       can [:show], User
+      can [:show], Product
       can :manage, User, id: user.id
       cannot :index, User
     end

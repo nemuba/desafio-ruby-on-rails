@@ -23,6 +23,7 @@ pt-BR:
           email: Email
           created_at: "Criado em"
           updated_at: "Atualizado em"
+          products: "Produtos"
         product:
           name: Nome
           price: Preço
@@ -30,3 +31,4 @@ pt-BR:
           image: Imagem
           url: Link
           created_at: "Criado em"
+          store: "Loja"

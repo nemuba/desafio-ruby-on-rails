@@ -8,12 +8,13 @@ module RailsAdmin
           true
         end
 
+
         register_instance_option :visible? do
           true
         end
 
         register_instance_option :breadcrumb_parent do
-          false
+          true
         end
 
         register_instance_option :controller do
@@ -48,6 +49,10 @@ module RailsAdmin
         end
 
         register_instance_option :statistics? do
+          true
+        end
+
+        register_instance_option :pjax? do
           true
         end
       end

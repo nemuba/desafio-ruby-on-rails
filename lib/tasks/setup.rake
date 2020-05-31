@@ -1,8 +1,8 @@
 require 'rest-client'
 
-namespace :load_products do
+namespace :setup do
   desc "TODO - Load 100 products for each store"
-  task load: :environment do
+  task load_products: :environment do
     begin
       # call API Fossill
       data = RestClient.get "https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=0&_to=49"
@@ -44,6 +44,18 @@ namespace :load_products do
       puts 'Load Complete !'
     end
 
+  end
+
+  desc "TODO - create user admin"
+  task create_admin: :environment do
+    admin = User.new(email: "admin@admin.com", password: "123456789", password_confirmation: "123456789", admin: true)
+
+    if !User.where(email: admin.email).exists?
+      admin.save
+      puts "Created with success!"
+    else
+      puts "User already exists!"
+    end
   end
 
 end

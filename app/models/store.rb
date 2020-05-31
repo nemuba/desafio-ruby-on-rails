@@ -5,7 +5,7 @@ class Store
   field :website, type: String
   field :email, type: String
   mount_base64_uploader :logo, LogoUploader
-  has_many :products, dependent: :destroy
+  has_many :products, dependent: :destroy, :inverse_of => :store
   accepts_nested_attributes_for :products, :allow_destroy => true
 
   def to_s
@@ -33,12 +33,8 @@ class Store
       field :website, :string
       field :email, :string
       field :logo, :carrierwave
+      field :products
     end
 
-    create do
-      configure :products do
-
-      end
-    end
   end
 end
