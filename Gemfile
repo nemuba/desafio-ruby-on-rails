@@ -13,7 +13,7 @@ gem 'rest-client'
 gem 'bootstrap', '~> 4.3.1'
 gem 'cancancan'
 gem 'cancancan-mongoid'
-
+gem 'searchkick'
 
 gem 'pg', group: :production
 

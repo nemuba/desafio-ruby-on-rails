@@ -14,6 +14,12 @@ class Product
   # validates
   validates_presence_of :name, :price, :plots
 
+  searchkick
+
+  def search_data
+    {name: name}
+  end
+
   # callback update url
   after_create :update_url
 
