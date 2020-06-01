@@ -19,6 +19,8 @@ class User
   include Mongoid::Timestamps
   field :admin, type: Boolean
 
+  validates_presence_of :email, :password, :password_confirmation
+
   def to_s
     self.email
   end

@@ -8,6 +8,8 @@ class Store
   has_many :products, dependent: :destroy, :inverse_of => :store
   accepts_nested_attributes_for :products, :allow_destroy => true
 
+  validates_presence_of :name, :website, :email
+
   def to_s
     self.name
   end
