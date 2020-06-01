@@ -1,24 +1,70 @@
-# README
+# Desafio Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Foi desenvolvido uma aplicação em ruby on rails baseado em um sistema administrativo para lojas(marketplace),
+utilizando as seguintes ferramentas:
 
-Things you may want to cover:
+### FERRAMNETAS UTILIZADAS
 
-* Ruby version
+* [Rails Admin - Gem](https://github.com/sferik/rails_admin)
+* [Devise - Gem](https://github.com/heartcombo/devise)
+* [Cloudinary - Gem](https://github.com/cloudinary/cloudinary_gem)
+* [Carrierwave - Gem](https://github.com/carrierwaveuploader/carrierwave)
+* [Carrierwave Base64 - Gem](https://github.com/y9v/carrierwave-base64)
+* [Carrierwave Mongoid - Gem](https://github.com/carrierwaveuploader/carrierwave-mongoid)
+* [Mongoid - Gem](https://github.com/mongodb/mongoid)
+* [Cancancan - Gem](https://github.com/CanCanCommunity/cancancan)
+* [Cancancan Mongoid - Gem](https://github.com/CanCanCommunity/cancancan-mongoid)
+* [Bootstrap - Gem](https://github.com/twbs/bootstrap-rubygem)
+* [Kaminari Mongoid - Gem](https://github.com/kaminari/kaminari-mongoid)
 
-* System dependencies
+### FERRAMENTA PARA DEPLOY
+* [Heroku](https://www.heroku.com/)
+  - Heroku addons [Cloudinary](https://elements.heroku.com/addons/cloudinary)
+  - Heroku addons [Mlab - MongoDB](https://elements.heroku.com/addons/mongolab)
 
-* Configuration
+### CONFIGURAÇÕES:
 
-* Database creation
+Baixe o projeto e rode o comando para instalar as gems:
 
-* Database initialization
+```sh
+bundle install
+```
 
-* How to run the test suite
+Coloque as configuraçẽs do mongo e do cloudinary:
 
-* Services (job queues, cache servers, search engines, etc.)
+* Arquivo de configuração do Mongo:
+```sh
+config/mongoid.yml
+```
 
-* Deployment instructions
+* Arquivo de Configuração do Clodinary:
+```sh
+config/cloudinary.yml
+```
 
-* ...
+
+Após a configuração rode o comando para gerar o usuário administrador:
+
+* Gerar usuário:
+```sh
+rails setup:create_admin
+
+email: admin@admin.com
+password: 123456789
+```
+
+Agora Pronto , Qualquer dúvida Tamo junto, Bons Estudos!
+
+-----------------------------------------------------------
+
+Autor: Alef Ojeda de Oliveira
+
+Email: nemubatubag@gmail.com
+
+Facebook: https://www.facebook.com/AlefOjedaOliveira/
+
+Github: https://github.com/nemuba
+
+Linkedin: https://www.linkedin.com/in/alef-ojeda/
+
+Twitter: https://twitter.com/OjedaAlef

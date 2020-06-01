@@ -13,6 +13,8 @@ gem 'rest-client'
 gem 'bootstrap', '~> 4.3.1'
 gem 'cancancan'
 gem 'cancancan-mongoid'
+
+
 gem 'pg', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
