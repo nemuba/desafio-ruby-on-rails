@@ -24,11 +24,15 @@ module RailsAdmin
             if params[:store]
               @breadcamp = Store.find_by(_id: params[:store])
 
+              # Implementação do searchkick
               if params[:search]
-                @object = Product.search "#{params[:search]}", where: {store_id: params[:store]}, page: params[:page], per_page: 4
-                # @object = Product.where(store_id: params[:store], name: /.*#{params[:search]}.*/i).page(params[:page]).per(4)
+                # @object = Product.search "#{params[:search]}", where: {store_id: params[:store]}, page: params[:page], per_page: 4
+                @object = Product.where(store_id: params[:store], name: /.*#{params[:search]}.*/i).page(params[:page]).per(4)
+
+                flash.now[:success] = "Busca concluida !"
               else
-                @object = Product.search "*", where: {store_id: params[:store]}, page: params[:page], per_page: 4
+                # @object = Product.search "*", where: {store_id: params[:store]}, page: params[:page], per_page: 4
+                @object = Product.where(store_id: params[:store]).page(params[:page]).per(4)
               end
             end
 
