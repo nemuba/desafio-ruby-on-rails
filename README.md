@@ -1,5 +1,9 @@
 # Desafio Ruby on Rails
 
+<p align="center">
+  <img src="https://github.com/nemuba/desafio-ruby-on-rails/blob/master/focused_working_isometric.png" width="350" title="hover text" />
+</p>
+
 Foi desenvolvido uma aplicação em ruby on rails baseado em um sistema administrativo para lojas(marketplace),
 utilizando as seguintes ferramentas:
 
