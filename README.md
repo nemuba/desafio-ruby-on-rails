@@ -3,7 +3,7 @@
 Foi desenvolvido uma aplicação em ruby on rails baseado em um sistema administrativo para lojas(marketplace),
 utilizando as seguintes ferramentas:
 
-### FERRAMNETAS UTILIZADAS
+### FERRAMENTAS UTILIZADAS:
 
 * [Rails Admin - Gem](https://github.com/sferik/rails_admin)
 * [Devise - Gem](https://github.com/heartcombo/devise)
@@ -16,11 +16,13 @@ utilizando as seguintes ferramentas:
 * [Cancancan Mongoid - Gem](https://github.com/CanCanCommunity/cancancan-mongoid)
 * [Bootstrap - Gem](https://github.com/twbs/bootstrap-rubygem)
 * [Kaminari Mongoid - Gem](https://github.com/kaminari/kaminari-mongoid)
+* [Searchkick - Gem](https://github.com/ankane/searchkick)
 
-### FERRAMENTA PARA DEPLOY
+### FERRAMENTA PARA DEPLOY:
 * [Heroku](https://www.heroku.com/)
   - Heroku addons [Cloudinary](https://elements.heroku.com/addons/cloudinary)
   - Heroku addons [Mlab - MongoDB](https://elements.heroku.com/addons/mongolab)
+  - Heroku addons [Bonsai - ElasticSearch](https://elements.heroku.com/addons/bonsai)
 
 ### CONFIGURAÇÕES:
 
