@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to '/', flash[:error] = 'Acesso negado !'
   end
+
+  rescue_from StandardError do |exception|
+    redirect_to '/', notice: "Página não encontrada !"
+  end
 end
