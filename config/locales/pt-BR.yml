@@ -10,6 +10,7 @@ pt-BR:
   mongoid:
     errors:
       messages:
+        message_title: 'Message title'
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente

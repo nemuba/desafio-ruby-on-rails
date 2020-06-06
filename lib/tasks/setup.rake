@@ -1,7 +1,48 @@
 require 'rest-client'
+require 'json'
+require 'down'
 
 namespace :setup do
-  desc "TODO - Load 100 products for each store"
+  desc "TODO - create user admin"
+  task create_admin: :environment do
+    admin = User.new(email: "admin@admin.com", password: "123456789", password_confirmation: "123456789", admin: true)
+
+    unless User.where(email: admin.email).exists?
+      admin.save
+      puts "Created Admin user  with success!"
+    else
+      puts "Admin user already exists!"
+    end
+  end
+
+  desc "TODO - create stores"
+  task create_stores: :environment do
+    fossil =  Store.new(name: "Fossil", email: "fossil@gmail.com", website: "site@fossil.com", logo: nil)
+    timex  =  Store.new(name: "Timex", email: "timex@gmail.com", website: "site@timex.com", logo: nil)
+    schumman = Store.new(name: "Schumman", email: "schumman@gmail.com", website: "site@schumman.com", logo: nil)
+
+    unless Store.where(name: fossil.name).exists?
+      if fossil.save
+        puts "Store #{fossil.name} creted with success !"
+      end
+    end
+
+    unless Store.where(name: timex.name).exists?
+      if timex.save
+        puts "Store #{timex.name} creted with success !"
+      end
+    end
+
+    unless Store.where(name: schumman.name).exists?
+      if schumman.save
+        puts "Store #{schumman.name} creted with success !"
+      end
+    end
+
+    puts "Process completed!"
+  end
+
+  desc "TODO - Load products"
   task load_products: :environment do
     begin
       # call API Fossill
@@ -24,38 +65,34 @@ namespace :setup do
         }
       end
 
-
-
       products.each do |product|
-        # puts product[:image]
-        if !Product.where(name: product[:name]).exists?
+        unless Product.where(name: product[:name]).exists?
           Product.create(product)
         end
       end
 
+      puts "Load Complete !"
 
-    rescue RestClient::NotFound => e
-      puts "API Fossil Page Not Found: #{e}"
-      return e
-    rescue RestClient::BadRequest => b
-      puts "API Fossil Bad Request: #{b}"
-      return b
-    else
-      puts 'Load Complete !'
-    end
+      rescue RestClient::Unauthorized, RestClient::Forbidden => err
+        puts 'Access denied'
+        return err.response
+      rescue RestClient::ImATeapot => err
+        puts 'The server is a teapot! # RFC 2324'
+        return err.response
+      rescue RestClient::NotFound => err
+        puts 'Page Not Found'
+        return err.response
+      rescue RestClient::ResourceNotFound => e
+        puts "Erro: #{e.response}"
+        return e.response
+      rescue SocketError => e
+        puts "Erro: #{e.class}"
+        return e
+      rescue Errno::ECONNREFUSED => e
+        puts "Erro: #{e.class}"
+        return e
+      end
 
-  end
-
-  desc "TODO - create user admin"
-  task create_admin: :environment do
-    admin = User.new(email: "admin@admin.com", password: "123456789", password_confirmation: "123456789", admin: true)
-
-    if !User.where(email: admin.email).exists?
-      admin.save
-      puts "Created with success!"
-    else
-      puts "User already exists!"
-    end
   end
 
 end

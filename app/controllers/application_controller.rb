@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
 
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to '/'
+    redirect_to '/', flash[:error] = 'Acesso negado !'
   end
 end

@@ -115,6 +115,8 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    down (5.1.1)
+      addressable (~> 2.5)
     elasticsearch (7.7.0)
       elasticsearch-api (= 7.7.0)
       elasticsearch-transport (= 7.7.0)
@@ -151,6 +153,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    json (2.3.0)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -347,7 +350,9 @@ DEPENDENCIES
   cloudinary
   coffee-rails (~> 4.2)
   devise
+  down
   jbuilder (~> 2.5)
+  json
   kaminari-mongoid
   listen (>= 3.0.5, < 3.2)
   mongoid

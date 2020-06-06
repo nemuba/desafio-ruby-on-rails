@@ -5,6 +5,7 @@ class Product
   field :price, type: Integer
   field :plots, type: Integer
   field :url, type: String
+  # field :image, type: String
   #  mount upload carrierwave base64
   mount_base64_uploader :image, ImageUploader
 
