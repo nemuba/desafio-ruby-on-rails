@@ -137,6 +137,9 @@ namespace :setup do
       rescue Errno::ECONNREFUSED => e
         spinner.error "Erro: #{e.class}"
         spinner.stop('Done !')
+      rescue RestClient::ExceptionWithResponse => e
+        spinner.error "Erro Exception: #{e.response}"
+        spinner.stop('Done !')
       end
   end
 
