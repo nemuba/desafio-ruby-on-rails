@@ -96,9 +96,9 @@ namespace :setup do
             p.store_id = product[:store_id]
             p.image = f
             p.save!
-
-            File.delete(temp)
           end
+
+          File.delete(temp.path)
         end
       end
 
