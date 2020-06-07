@@ -103,7 +103,7 @@ namespace :setup do
       end
 
       spinner.success "Load Complete !"
-
+      spinner.stop('Done !')
 
       rescue RestClient::Unauthorized, RestClient::Forbidden => err
          spinner.error 'Access denied'

@@ -21,12 +21,15 @@ utilizando as seguintes ferramentas:
 * [Bootstrap - Gem](https://github.com/twbs/bootstrap-rubygem)
 * [Kaminari Mongoid - Gem](https://github.com/kaminari/kaminari-mongoid)
 * [Searchkick - Gem](https://github.com/ankane/searchkick)
+* [Down - gem](https://github.com/janko/down)
+* [TTY-Spinner - gem](https://github.com/piotrmurach/tty-spinner)
 
 ### FERRAMENTA PARA DEPLOY:
 * [Heroku](https://www.heroku.com/)
   - Heroku addons [Cloudinary](https://elements.heroku.com/addons/cloudinary)
   - Heroku addons [Mlab - MongoDB](https://elements.heroku.com/addons/mongolab)
   - Heroku addons [Bonsai - ElasticSearch](https://elements.heroku.com/addons/bonsai)
+  - Heroku addons [Mailgun](https://elements.heroku.com/addons/mailgun)
 
 ### CONFIGURAÇÕES:
 
@@ -48,10 +51,21 @@ config/mongoid.yml
 config/cloudinary.yml
 ```
 
+* Arquivo de Configuração do Elasticsearch(se necessário):
+```sh
+config/eleasticsearch.rb
+```
+
+* Configurar envio de email de recuperação de senha para o devise:
+```sh
+config/environments/development.rb -> Desenvolvimento
+
+config/environments/production.rb -> Produção
+```
 
 Após a configuração rode o comando para gerar o usuário administrador:
 
-* Gerar usuário:
+* Gerar usuário Admin:
 ```sh
 rails setup:create_admin
 
@@ -59,6 +73,17 @@ email: admin@admin.com
 password: 123456789
 ```
 
+* Gerar 3 lojas fakes: Fossil, Timex e Schumman
+
+```sh
+rails setup:create_stores
+```
+
+* Buscar produtos da API disponibilizada para desafio
+
+```sh
+rails setup:load_products
+```
 Agora Pronto , Qualquer dúvida Tamo junto, Bons Estudos!
 
 -----------------------------------------------------------
