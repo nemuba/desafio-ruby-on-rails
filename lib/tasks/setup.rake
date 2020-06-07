@@ -6,7 +6,7 @@ namespace :setup do
   desc "TODO - create user admin"
   task create_admin: :environment do
 
-    spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :pulse_2)
+    spinner = TTY::Spinner.new("[:spinner] Creating user admin ...", format: :pulse_2)
 
     spinner.auto_spin # Automatic animation with default interval
 
@@ -27,7 +27,7 @@ namespace :setup do
   task create_stores: :environment do
 
 
-    spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :pulse_2)
+    spinner = TTY::Spinner.new("[:spinner] Creating stores ...", format: :pulse_2)
 
     spinner.auto_spin # Automatic animation with default interval
 
@@ -60,17 +60,31 @@ namespace :setup do
 
   desc "TODO - Load products"
   task load_products: :environment do
+    apis = [
+      'https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=0&_to=49',
+      'http://www.timex.com.br/api/catalog_system/pub/products/search/',
+      'https://www.schumann.com.br/api/catalog_system/pub/products/search/'
+    ]
+
+    stores = [
+      'Fossil','Timex','Schumman'
+    ]
+
+  spinners = TTY::Spinner::Multi.new("[:spinner] Loading ...")
+
+  apis.each.with_index do |api,index|
+
     begin
-      spinner = TTY::Spinner.new("[:spinner] Loading ...", format: :pulse_2)
+      spinner = spinners.register "[:spinner] Loading #{stores[index]}"
 
       spinner.auto_spin # Automatic animation with default interval
       # call API Fossill
-      data = RestClient.get "https://www.fossil.com.br/api/catalog_system/pub/products/search?_from=0&_to=49&page=2"
+      data = RestClient.get(api)
 
       #Parse data of request
       response = JSON.parse(data.body)
 
-      store = Store.find_by(name: "Fossil")
+      store = Store.find_by(name: stores[index])
 
       # Mapping response for get product info
       products = response.map do |product|
@@ -106,31 +120,28 @@ namespace :setup do
       spinner.stop('Done !')
 
       rescue RestClient::Unauthorized, RestClient::Forbidden => err
-         spinner.error 'Access denied'
-         spinner.stop('Done !')
-        return err.response
+        spinner.error 'Access denied'
+        spinner.stop('Done !')
       rescue RestClient::ImATeapot => err
-         spinner.error 'The server is a teapot! # RFC 2324'
-         spinner.stop('Done !')
-        return err.response
+        spinner.error 'The server is a teapot! # RFC 2324'
+        spinner.stop('Done !')
       rescue RestClient::NotFound => err
-         spinner.error 'Page Not Found'
-         spinner.stop('Done !')
-        return err.response
+        spinner.error 'Page Not Found'
+        spinner.stop('Done !')
       rescue RestClient::ResourceNotFound => e
-         spinner.error "Erro: #{e.response}"
-         spinner.stop('Done !')
-        return e.response
+        spinner.error "Erro: #{e.response}"
+        spinner.stop('Done !')
       rescue SocketError => e
-         spinner.error "Erro: #{e.class}"
-         spinner.stop('Done !')
-        return e
+        spinner.error "Erro: #{e.class}"
+        spinner.stop('Done !')
       rescue Errno::ECONNREFUSED => e
         spinner.error "Erro: #{e.class}"
         spinner.stop('Done !')
-        return e
       end
+  end
 
   end
+
+
 
 end
