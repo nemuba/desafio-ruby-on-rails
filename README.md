@@ -84,6 +84,14 @@ rails setup:create_stores
 ```sh
 rails setup:load_products
 ```
+
+* Resultado dos scripts:
+
+
+<p align="center">
+  <img src="https://github.com/nemuba/desafio-ruby-on-rails/blob/master/tasks.png" width="350" title="hover text" />
+</p>
+
 Agora Pronto , Qualquer dúvida Tamo junto, Bons Estudos!
 
 -----------------------------------------------------------
