@@ -31,4 +31,5 @@ pt-BR:
           image: Imagem
           url: Link
           created_at: "Criado em"
+          updated_at: "Atualizado em"
           store: "Loja"
