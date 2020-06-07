@@ -89,7 +89,7 @@ rails setup:load_products
 
 
 <p align="center">
-  <img src="https://github.com/nemuba/desafio-ruby-on-rails/blob/master/tasks.png" width="350" title="hover text" />
+  <img src="https://github.com/nemuba/desafio-ruby-on-rails/blob/master/tasks.png" title="hover text" />
 </p>
 
 Agora Pronto , Qualquer dúvida Tamo junto, Bons Estudos!
