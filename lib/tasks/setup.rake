@@ -138,7 +138,7 @@ namespace :setup do
         spinner.error "Erro: #{e.class}"
         spinner.stop('Done !')
       rescue RestClient::ExceptionWithResponse => e
-        spinner.error "Erro Exception: #{e.response}"
+        spinner.error "Erro Exception: #{e.http_code}"
         spinner.stop('Done !')
       end
   end
